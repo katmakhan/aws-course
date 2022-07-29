@@ -2,27 +2,37 @@
 In your first year includes 750 hours of t2.micro (or t3.micro in the Regions in which t2.micro is unavailable) instance usage on free tier AMIs per month, 30 GiB of EBS storage, 2 million IOs, 1 GB of snapshots, and 100 GB of bandwidth to the internet
 
 
-# Steps
+# Steps to Install open VPN in AWS
 - Choose whichever that shows "Eligble for FREE TIER"
-Create a key pair name it <somekey> and download as .ppk - For putty login and .pem for SSH
+Create a key pair name it <somekey> and download as 
+- <.ppk> : For putty login 
+- <.pem> : for SSH
 
-https://us-west-2.console.aws.amazon.com/ is the Instance (There will be other instances like this)
-https://ap-south-1.console.aws.amazon.com/ec2/v2/home?region=ap-south-1#Instances: (This will be the Indian Server)
+# Created instance will be like
+There will be other instances like this
 
+```console
+https://us-west-2.console.aws.amazon.com/ 
+```
+(This will be the Indian Server)
+```console
+https://ap-south-1.console.aws.amazon.com/ec2/v2/home?region=ap-south-1
+```
+# Connecting VM Instances:
 
-Right click on instance and choose CONNECT, That will contains the code for connecting the server
+- Right click on instance and choose CONNECT, That will contains the code for connecting the server
+- to change the permission (If needed)
+```console
+chmod 400 openvpn_serverkey.pem 
+```
+- to access it 
+```console
+ssh -i "vpn-aws-mumbai.pem" root@ec2-<IP>.ap-south-1.compute.amazonaws.com 
+```
+- After that, Agree the terms
+- After sucess, the root will be changed
 
-chmod 400 openvpn_serverkey.pem to change the permission (If needed)
-and also works in C drive only, Dont know why
-
-
-ssh -i "vpn-aws-mumbai.pem" root@ec2-<IP>.ap-south-1.compute.amazonaws.com to access it 
-
-
-After that, Agree the terms
-After sucess, the root will be changed
-
---------------------------------------------------------------------------------
+```console
 Initial Configuration Complete!
 
 You can now continue configuring OpenVPN Access Server by
@@ -42,39 +52,35 @@ See the Release Notes for this release at:
 Please login as the user "openvpnas" rather than the user "root".
 
 Connection to ec2-<IP>.ap-south-1.compute.amazonaws.com closed.
----------------------------------------------------------------------------------
+```
 
-so run this instead
-
+- so run this instead after that
+```console
 ssh -i "vpn-aws-mumbai.pem" openvpnas@ec2-<IP>.ap-south-1.compute.amazonaws.com to access it 
-
-
+```
 
 Change the password by
+```console
 sudo passwd openvpn
+```
+- Then login to Admin  UI: https://<IP>:<PORT>/admin with ID as openvpn and changed password
+- Then go to configuration > VPN Settings > Routing >
+- Should client Internet traffic be routed through the VPN? To YES
+- Click Save
+- Click Update running server on the top
 
-[btechadmin]
-
-
-Then login to Admin  UI: https://<IP>:<PORT>/admin with ID as openvpn and changed password
-
-Then go to configuration > VPN Settings > Routing >
-Should client Internet traffic be routed through the VPN? To YES
-Click Save
-Click Update running server on the top
-
-------------------------------------------------------------------------------------------
+---
 https://<IP>:<PORT>
 
-To Download the software after LOGIN
+To download the software after LOGIN
 
 
 Add new user by
 Going to USER MANAGERMENT > User Permissions, Allow new user, allow autologin, then set a new password (BY CLICKING EDIT BUTTON)
 THen Save and Restart the machine
 
--------------------------------------------------------------------------------------------
-PUTY GENERATOR 
+---
+### PUTY GENERATOR 
 
 Loads > .pem
 Generates >.ppk file
@@ -92,4 +98,4 @@ the Changed vpn will be openvpnas
 
 
 Connection >SSH>Auth > Upload the .ppk file
---------------------------------------------------------------------------------------------
+---
