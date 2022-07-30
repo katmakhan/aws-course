@@ -1,12 +1,17 @@
 # Free Tier- AWS CLOUD
-In your first year includes 750 hours of t2.micro (or t3.micro in the Regions in which t2.micro is unavailable) instance usage on free tier AMIs per month, 30 GiB of EBS storage, 2 million IOs, 1 GB of snapshots, and 100 GB of bandwidth to the internet
+In your first year includes 
+- `750 hours` of `t2.micro` (or `t3.micro` in the Regions in which t2.micro is unavailable) instance usage on free tier AMIs per month, 
+- `30 GiB` of `EBS storage`,
+- `2 million` IOs, 
+- `1 GB` of `snapshots`
+- `100 GB` of `bandwidth` to the internet
 
 
 # Steps to Install open VPN in AWS
-- Choose whichever that shows "Eligble for FREE TIER"
+- Choose whichever that shows `Eligble for FREE TIER`
 Create a key pair name it <somekey> and download as 
-- <.ppk> : For putty login 
-- <.pem> : for SSH
+- `.ppk` : For `putty` login 
+- `.pem` : for `SSH`
 
 # Created instance will be like
 There will be other instances like this
@@ -47,7 +52,7 @@ Admin  UI: https://<IP>:<PORT>/admin
 Client UI: https://<IP>:<PORT>/
 
 See the Release Notes for this release at:
-   https://openvpn.net/vpn-server-resources/release-notes/
+https://openvpn.net/vpn-server-resources/release-notes/
 
 Please login as the user "openvpnas" rather than the user "root".
 
@@ -63,14 +68,14 @@ Change the password by
 ```console
 sudo passwd openvpn
 ```
-- Then login to Admin  UI: https://<IP>:<PORT>/admin with ID as openvpn and changed password
+- Then login to Admin  UI: `https://<IP>:<PORT>/admin` with ID as openvpn and changed password
 - Then go to configuration > VPN Settings > Routing >
 - Should client Internet traffic be routed through the VPN? To YES
 - Click Save
 - Click Update running server on the top
 
 ---
-https://<IP>:<PORT>
+`https://<IP>:<PORT>`
 
 To download the software after LOGIN
 
